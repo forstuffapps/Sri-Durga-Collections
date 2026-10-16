@@ -1,32 +1,120 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sri Durga Collections</title>
+  <title>Sarees | Sri Durga Collections</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="static/css/styles.css">
 </head>
 <body>
+  <!-- Header / primary navigation -->
   <div class="container">
     <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-      <a href="./index.html" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-        <img src="static/images/SDC_Logo.png" alt="Sri Durga Collections">
-      </a>
-      <ul class="nav nav-pills">
+      <a href="./index.html" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"><img src="static/images/SDC_Logo.png" alt="Sri Durga Collections"></a>
+      <nav aria-label="Primary navigation"><ul class="nav nav-pills">
         <li class="nav-item"><a href="./index.html" class="nav-link text-body-secondary">Home</a></li>
         <li class="nav-item"><a href="./sarees.html" class="nav-link active bg-dark" aria-current="page">Sarees</a></li>
         <li class="nav-item"><a href="./dresses.html" class="nav-link text-body-secondary">Dresses</a></li>
         <li class="nav-item"><a href="./nighties.html" class="nav-link text-body-secondary">Nighties</a></li>
         <li class="nav-item"><a href="./orders.html" class="nav-link text-body-secondary">Orders</a></li>
-      </ul>
+      </ul></nav>
     </header>
   </div>
 
-  <!-- Sarees page: Inventory -->
-  <main class="container d-flex flex-column align-items-center justify-content-center text-center py-5" style="min-height: 65vh;">
-    <h1 class="display-6 fw-bold mb-4">Adding new collections to our Inventory. Releasing soon!</h1>
-    <img src="static/images/Forklift_loading_truck_svg.svg" class="img-fluid" alt="Orders page coming soon" style="max-width: 480px;">
+  <!-- Saree collection cards: data comes from static/data/sarees.json -->
+  <main class="container pb-5">
+    <section class="catalogue-heading text-center mb-5" aria-labelledby="sarees-title">
+      <p class="text-uppercase small fw-semibold mb-2">Sri Durga Collections</p>
+      <h1 id="sarees-title" class="display-5 fw-bold">Saree Collections</h1>
+      <p class="text-body-secondary mb-0">Use the arrows to browse each series. Select an image for a closer look.</p>
+    </section>
+    <div id="saree-catalogue" class="row row-cols-1 row-cols-lg-3 g-4" aria-live="polite"></div>
+    <p id="catalogue-error" class="alert alert-warning d-none mt-4" role="alert">The collection details could not be loaded. Please refresh the page.</p>
   </main>
+
+  <!-- Enlarged image view: image left, details right -->
+  <dialog id="product-dialog" class="product-dialog">
+    <button id="dialog-close" class="dialog-close" type="button" aria-label="Close enlarged product view">&times;</button>
+    <div class="product-dialog-content">
+      <div class="product-dialog-image"><img id="dialog-image" src="" alt=""></div>
+      <div class="product-dialog-details">
+        <p id="dialog-code" class="product-code-main"></p>
+        <p id="dialog-series" class="product-series"></p>
+        <p id="dialog-type" class="product-detail"></p>
+        <p id="dialog-price" class="product-price"></p>
+        <div class="collection-controls dialog-controls">
+          <button id="dialog-previous" class="collection-arrow" type="button" aria-label="Show previous item">&larr;</button>
+          <span id="dialog-count" class="collection-count"></span>
+          <button id="dialog-next" class="collection-arrow" type="button" aria-label="Show next item">&rarr;</button>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <script>
+    const gallery=document.querySelector("#saree-catalogue"), error=document.querySelector("#catalogue-error"), dialog=document.querySelector("#product-dialog");
+    const money=price=>String(price);
+    const image=item=>"static/images/Series - "+item.series+"/"+item.itemCode+".jpg";
+    let dialogItems=[],dialogIndex=0;
+
+    function renderDialog(){
+      const item=dialogItems[dialogIndex];
+      document.querySelector("#dialog-image").src=image(item);
+      document.querySelector("#dialog-image").alt=item.itemType+", "+item.itemCode;
+      document.querySelector("#dialog-code").textContent=item.itemCode;
+      document.querySelector("#dialog-series").textContent="Series - "+item.series;
+      document.querySelector("#dialog-type").textContent="Itemtype : "+item.itemType;
+      document.querySelector("#dialog-price").textContent=money(item.price);
+      document.querySelector("#dialog-count").textContent=(dialogIndex+1)+" / "+dialogItems.length;
+    }
+
+    function open(items,index){
+      dialogItems=items; dialogIndex=index; renderDialog();
+      if(!dialog.open) dialog.showModal();
+    }
+
+    function addSwipe(element,onPrevious,onNext){
+      let startX=0,startY=0;
+      element.addEventListener("touchstart",event=>{const touch=event.changedTouches[0];startX=touch.screenX;startY=touch.screenY},{passive:true});
+      element.addEventListener("touchend",event=>{const touch=event.changedTouches[0],x=touch.screenX-startX,y=touch.screenY-startY;if(Math.abs(x)>45&&Math.abs(x)>Math.abs(y)){x<0?onNext():onPrevious()}},{passive:true});
+    }
+    function card(series,items){
+      let index=0; const col=document.createElement("div"); col.className="col";
+      col.innerHTML=`<article class="collection-card h-100">
+        <button class="collection-image-button" type="button"><img class="collection-image" src="${image(items[0])}" alt=""><span class="image-hint">Click to view larger</span></button>
+        <div class="collection-details">
+          <h2 class="product-code-main"></h2>
+          <p class="product-series"></p>
+          <p class="product-detail">Itemtype : <span class="item-type"></span></p>
+          <p class="product-price"></p>
+          <div class="collection-controls"><button class="collection-arrow previous" type="button" aria-label="Previous item">&larr;</button><span class="collection-count"></span><button class="collection-arrow next" type="button" aria-label="Next item">&rarr;</button></div>
+        </div>
+      </article>`;
+      const img=col.querySelector(".collection-image"), code=col.querySelector(".product-code-main"), seriesText=col.querySelector(".product-series"), type=col.querySelector(".item-type"), price=col.querySelector(".product-price"), count=col.querySelector(".collection-count");
+      function show(next){
+        index=(next+items.length)%items.length; const item=items[index];
+        img.src=image(item); img.alt=item.itemType+", "+item.itemCode;
+        code.textContent=item.itemCode; seriesText.textContent="Series - "+item.series; type.textContent=item.itemType;
+        price.textContent=money(item.price); count.textContent=(index+1)+" / "+items.length;
+      }
+      col.querySelector(".previous").onclick=()=>show(index-1);
+      col.querySelector(".next").onclick=()=>show(index+1);
+      col.querySelector(".collection-image-button").onclick=()=>open(items,index);
+      addSwipe(col.querySelector(".collection-image-button"),()=>show(index-1),()=>show(index+1));
+      show(0); return col;
+    }
+
+    fetch("static/data/sarees.json").then(r=>{if(!r.ok)throw Error();return r.json()}).then(items=>{
+      const groups=items.reduce((all,item)=>{(all[item.series]??=[]).push(item);return all},{});
+      Object.entries(groups).forEach(([series,items])=>gallery.append(card(series,items)));
+    }).catch(()=>error.classList.remove("d-none"));
+
+    document.querySelector("#dialog-close").onclick=()=>dialog.close();
+    document.querySelector("#dialog-previous").onclick=()=>{dialogIndex=(dialogIndex+dialogItems.length-1)%dialogItems.length;renderDialog()};
+    document.querySelector("#dialog-next").onclick=()=>{dialogIndex=(dialogIndex+1)%dialogItems.length;renderDialog()};
+    addSwipe(document.querySelector(".product-dialog-image"),()=>{dialogIndex=(dialogIndex+dialogItems.length-1)%dialogItems.length;renderDialog()},()=>{dialogIndex=(dialogIndex+1)%dialogItems.length;renderDialog()});
+    dialog.addEventListener("click",e=>{if(e.target===dialog)dialog.close()});
+  </script>
 </body>
 </html>

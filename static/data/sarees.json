@@ -1,0 +1,14 @@
+[
+  {"series":"AD","itemType":"Saree - Classic","itemCode":"AD-1","price":2500},
+  {"series":"AD","itemType":"Saree - Classic","itemCode":"AD-2","price":1500},
+  {"series":"AD","itemType":"Saree - Classic","itemCode":"AD-3","price":2000},
+  {"series":"D","itemType":"Saree","itemCode":"D-1","price":1500},
+  {"series":"D","itemType":"Saree","itemCode":"D-2","price":2000},
+  {"series":"D","itemType":"Saree","itemCode":"D-3","price":1000},
+  {"series":"D","itemType":"Saree","itemCode":"D-4","price":1800},
+  {"series":"D","itemType":"Saree","itemCode":"D-5","price":2200},
+  {"series":"J","itemType":"Saree","itemCode":"J-1","price":2000},
+  {"series":"J","itemType":"Saree","itemCode":"J-2","price":1000},
+  {"series":"J","itemType":"Saree","itemCode":"J-3","price":1500},
+  {"series":"J","itemType":"Saree","itemCode":"J-4","price":2500}
+]
