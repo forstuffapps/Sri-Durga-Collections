@@ -1,14 +1,82 @@
 [
-  {"series":"AD","itemType":"Saree - Classic","itemCode":"AD-1","price":2500},
-  {"series":"AD","itemType":"Saree - Classic","itemCode":"AD-2","price":1500},
-  {"series":"AD","itemType":"Saree - Classic","itemCode":"AD-3","price":2000},
-  {"series":"D","itemType":"Saree","itemCode":"D-1","price":1500},
-  {"series":"D","itemType":"Saree","itemCode":"D-2","price":2000},
-  {"series":"D","itemType":"Saree","itemCode":"D-3","price":1000},
-  {"series":"D","itemType":"Saree","itemCode":"D-4","price":1800},
-  {"series":"D","itemType":"Saree","itemCode":"D-5","price":2200},
-  {"series":"J","itemType":"Saree","itemCode":"J-1","price":2000},
-  {"series":"J","itemType":"Saree","itemCode":"J-2","price":1000},
-  {"series":"J","itemType":"Saree","itemCode":"J-3","price":1500},
-  {"series":"J","itemType":"Saree","itemCode":"J-4","price":2500}
+  {
+    "code": "SC-3",
+    "price": 2200,
+    "colors": [
+      {
+        "color": "C1",
+        "image": "static/SDC%20Sarees/SC-3_C1_2200.png"
+      },
+      {
+        "color": "C2",
+        "image": "static/SDC%20Sarees/SC-3_C2_2200.png"
+      },
+      {
+        "color": "C3",
+        "image": "static/SDC%20Sarees/SC-3_C3_2200.png"
+      }
+    ]
+  },
+  {
+    "code": "SG-3",
+    "price": 2400,
+    "colors": [
+      {
+        "color": "C1",
+        "image": "static/SDC%20Sarees/SG-3_C1_2400.png"
+      },
+      {
+        "color": "C2",
+        "image": "static/SDC%20Sarees/SG-3_C2_2400.png"
+      },
+      {
+        "color": "C3",
+        "image": "static/SDC%20Sarees/SG-3_C3_2400.png"
+      }
+    ]
+  },
+  {
+    "code": "SH-4",
+    "price": 2500,
+    "colors": [
+      {
+        "color": "C1",
+        "image": "static/SDC%20Sarees/SH-4_C1_2500.png"
+      },
+      {
+        "color": "C2",
+        "image": "static/SDC%20Sarees/SH-4_C2_2500.png"
+      },
+      {
+        "color": "C3",
+        "image": "static/SDC%20Sarees/SH-4_C3_2500.png"
+      },
+      {
+        "color": "C4",
+        "image": "static/SDC%20Sarees/SH-4_C4_2500.png"
+      }
+    ]
+  },
+  {
+    "code": "SX-4",
+    "price": 2200,
+    "colors": [
+      {
+        "color": "C1",
+        "image": "static/SDC%20Sarees/SX-4_C1_2200.png"
+      },
+      {
+        "color": "C2",
+        "image": "static/SDC%20Sarees/SX-4_C2_2200.png"
+      },
+      {
+        "color": "C3",
+        "image": "static/SDC%20Sarees/SX-4_C3_2200.png"
+      },
+      {
+        "color": "C4",
+        "image": "static/SDC%20Sarees/SX-4_C4_2200.png"
+      }
+    ]
+  }
 ]
