@@ -1,0 +1,112 @@
+[
+  {
+    "code": "DB-1",
+    "price": 1600,
+    "colors": [
+      {
+        "color": "C3",
+        "image": "static/SDC%20Dresses/DB-1_C3_1600.png"
+      }
+    ]
+  },
+  {
+    "code": "DD-2",
+    "price": 600,
+    "colors": [
+      {
+        "color": "C2",
+        "image": "static/SDC%20Dresses/DD-2_C2_600.png"
+      }
+    ]
+  },
+  {
+    "code": "DE-1",
+    "price": 1100,
+    "colors": [
+      {
+        "color": "C2",
+        "image": "static/SDC%20Dresses/DE-1_C2_1100.png"
+      }
+    ]
+  },
+  {
+    "code": "DE-2",
+    "price": 800,
+    "colors": [
+      {
+        "color": "C2",
+        "image": "static/SDC%20Dresses/DE-2_C2_800.png"
+      }
+    ]
+  },
+  {
+    "code": "DF-2",
+    "price": 1300,
+    "colors": [
+      {
+        "color": "C2",
+        "image": "static/SDC%20Dresses/DF-2_C2_1300.png"
+      }
+    ]
+  },
+  {
+    "code": "DG-4",
+    "price": 700,
+    "colors": [
+      {
+        "color": "C1",
+        "image": "static/SDC%20Dresses/DG-4_C1_700.png"
+      }
+    ]
+  },
+  {
+    "code": "DQ-1",
+    "price": 1200,
+    "colors": [
+      {
+        "color": "C3",
+        "image": "static/SDC%20Dresses/DQ-1_C3_1200.png"
+      }
+    ]
+  },
+  {
+    "code": "DR-1",
+    "price": 1400,
+    "colors": [
+      {
+        "color": "C2",
+        "image": "static/SDC%20Dresses/DR-1_C2_1400.png"
+      }
+    ]
+  },
+  {
+    "code": "DT-1",
+    "price": 1300,
+    "colors": [
+      {
+        "color": "C1",
+        "image": "static/SDC%20Dresses/DT-1_C1_1300.png"
+      }
+    ]
+  },
+  {
+    "code": "DW-4",
+    "price": 1100,
+    "colors": [
+      {
+        "color": "C1",
+        "image": "static/SDC%20Dresses/DW-4_C1_1100.png"
+      }
+    ]
+  },
+  {
+    "code": "DY-1",
+    "price": 1000,
+    "colors": [
+      {
+        "color": "C1",
+        "image": "static/SDC%20Dresses/DY-1_C1_1000.png"
+      }
+    ]
+  }
+]

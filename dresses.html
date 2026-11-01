@@ -1,32 +1,49 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sri Durga Collections</title>
+  <title>Dresses | Sri Durga Collections</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="static/css/styles.css">
 </head>
 <body>
+  <!-- Header / primary navigation -->
   <div class="container">
     <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-      <a href="./index.html" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-        <img src="static/images/SDC_Logo.png" alt="Sri Durga Collections">
-      </a>
-      <ul class="nav nav-pills">
+      <a href="./index.html" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"><img src="static/images/SDC_Logo.png" alt="Sri Durga Collections"></a>
+      <nav aria-label="Primary navigation"><ul class="nav nav-pills">
         <li class="nav-item"><a href="./index.html" class="nav-link text-body-secondary">Home</a></li>
         <li class="nav-item"><a href="./sarees.html" class="nav-link text-body-secondary">Sarees</a></li>
         <li class="nav-item"><a href="./dresses.html" class="nav-link active bg-dark" aria-current="page">Dresses</a></li>
-        <li class="nav-item"><a href="./nighties.html" class="nav-link text-body-secondary">Nighties</a></li>
+        <li class="nav-item"><a href="./nightwear.html" class="nav-link text-body-secondary">Nightwear</a></li>
         <li class="nav-item"><a href="./orders.html" class="nav-link text-body-secondary">Orders</a></li>
-      </ul>
+      </ul></nav>
     </header>
   </div>
-
-  <!-- Dresses page: Inventory -->
-  <main class="container d-flex flex-column align-items-center justify-content-center text-center py-5" style="min-height: 65vh;">
-    <h1 class="display-6 fw-bold mb-4">Adding new collections to our Inventory. Releasing soon!</h1>
-    <img src="static/images/Forklift_loading_truck_svg.svg" class="img-fluid" alt="Orders page coming soon" style="max-width: 480px;">
+  <!-- Product catalogue -->
+  <main class="container pb-5 catalogue" data-catalogue="static/data/dresses.json" data-product-name="Dress">
+    <section class="catalogue-heading text-center mb-5" aria-labelledby="catalogue-title">
+      <p class="text-uppercase small fw-semibold mb-2">Sri Durga Collections</p>
+      <h1 id="catalogue-title" class="display-5 fw-bold">Dresses Collection</h1>
+      <p class="text-body-secondary mb-0">Swipe a product image or use the arrows to see available colours.</p>
+    </section>
+    <div class="catalogue-grid row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" aria-live="polite"></div>
+    <p class="catalogue-empty alert alert-light text-center d-none" role="status">New dresses designs will be added soon.</p>
+    <p class="catalogue-error alert alert-warning d-none" role="alert">The product details could not be loaded. Please refresh the page.</p>
   </main>
+  <!-- Enlarged product viewer -->
+  <dialog class="product-dialog">
+    <button class="dialog-close" type="button" aria-label="Close enlarged product view">&times;</button>
+    <div class="product-dialog-content">
+      <div class="product-dialog-image"><img src="" alt=""></div>
+      <div class="product-dialog-details">
+        <h2 class="dialog-code product-code-main"></h2>
+        <p class="dialog-price product-price"></p>
+        <div class="collection-controls dialog-controls"><button class="collection-arrow dialog-previous" type="button" aria-label="Previous colour">&larr;</button><span class="dialog-count collection-count"></span><button class="collection-arrow dialog-next" type="button" aria-label="Next colour">&rarr;</button></div>
+      </div>
+    </div>
+  </dialog>
+  <script src="static/js/catalogue.js"></script>
 </body>
 </html>
